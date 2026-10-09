@@ -25,8 +25,6 @@ pipeline {
 
         stage('Build') {
             steps {
-                withCredentials([file(credentialsId: 'tm-env-prod', variable: 'ENV_PROD')]) {
-                    dir('frontend') {
                         sh '''
                         cp $ENV_PROD .env.production
                         npm run build
