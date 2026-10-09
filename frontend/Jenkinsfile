@@ -3,15 +3,15 @@ pipeline {
 
     environment {
         AWS_REGION = 'us-east-1'
-        S3_BUCKET = 'task-manager7'
-        CLOUDFRONT_DISTRIBUTION_ID = 'E17PETT8G2VOVG'
+        S3_BUCKET = 'code-manager-2026'
+        CLOUDFRONT_DISTRIBUTION_ID = 'E3IM4JX7SHQBDJ'
     }
 
     stages {
 
         stage('checkout') {
             steps {
-                git credentialsId: 'github-cred', url: 'https://github.com/Ramezz07/taskmanager.git'
+                git credentialsId: 'github-cred', url: 'https://github.com/Sakthi5577/code-task.git'
             }
         }
 
