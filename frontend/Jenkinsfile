@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        AWS_REGION = 'ap-east-1'
+        AWS_REGION = 'us-east-1'
         S3_BUCKET = 'mybucket-2026-00'
         CLOUDFRONT_DISTRIBUTION_ID = 'E62OT6EWXIXUL'
     }
