@@ -3,8 +3,8 @@ pipeline {
 
     environment {
         AWS_REGION = 'us-east-1'
-        S3_BUCKET = 'code-manager-2026'
-        CLOUDFRONT_DISTRIBUTION_ID = 'E3IM4JX7SHQBDJ'
+        S3_BUCKET = 'mybucket-2026-00'
+        CLOUDFRONT_DISTRIBUTION_ID = 'E62OT6EWXIXUL'
     }
 
     stages {
@@ -35,7 +35,7 @@ pipeline {
 
         stage('Deploy to S3') {
             steps {
-                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-cred']]) {
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'kiaq-aws-cred']]) {
                     sh """
                     /usr/local/bin/aws s3 sync frontend/build/ s3://${S3_BUCKET} --delete
                     """
@@ -45,7 +45,7 @@ pipeline {
 
         stage('Invalidate CloudFront Cache') {
             steps {
-                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-cred']]) {
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'kiaq-aws-cred']]) {
                     sh """
                     /usr/local/bin/aws cloudfront create-invalidation \
                     --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID} \
